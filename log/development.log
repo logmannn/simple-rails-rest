@@ -701,3 +701,77 @@ Processing by V1::SessionsController#create as */*
 Completed 201 Created in 60209ms (Views: 0.2ms | ActiveRecord: 2.4ms)
 
 
+Started POST "/v1/sessions" for 127.0.0.1 at 2018-05-09 15:19:16 -0700
+Processing by V1::SessionsController#create as */*
+  Parameters: {"email"=>"bob@bobwrong.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "bob@bobwrong.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 6ms (ActiveRecord: 2.5ms)
+
+
+Started POST "/v1/sessions" for 127.0.0.1 at 2018-05-09 15:19:39 -0700
+  
+SyntaxError (/Users/Guest/Desktop/simple-rails-rest/app/controllers/v1/sessions_controller.rb:5: syntax error, unexpected '.'
+    if user && .valid_password?(params[:passwo
+                ^
+/Users/Guest/Desktop/simple-rails-rest/app/controllers/v1/sessions_controller.rb:15: syntax error, unexpected keyword_end, expecting end-of-input):
+  
+app/controllers/v1/sessions_controller.rb:5: syntax error, unexpected '.'
+app/controllers/v1/sessions_controller.rb:15: syntax error, unexpected keyword_end, expecting end-of-input
+Started POST "/v1/sessions" for 127.0.0.1 at 2018-05-09 15:19:44 -0700
+  
+SyntaxError (/Users/Guest/Desktop/simple-rails-rest/app/controllers/v1/sessions_controller.rb:5: syntax error, unexpected '.'
+    if user && .valid_password?(params[:passwo
+                ^
+/Users/Guest/Desktop/simple-rails-rest/app/controllers/v1/sessions_controller.rb:15: syntax error, unexpected keyword_end, expecting end-of-input):
+  
+app/controllers/v1/sessions_controller.rb:5: syntax error, unexpected '.'
+app/controllers/v1/sessions_controller.rb:15: syntax error, unexpected keyword_end, expecting end-of-input
+Started POST "/v1/sessions" for 127.0.0.1 at 2018-05-09 15:19:56 -0700
+Processing by V1::SessionsController#create as */*
+  Parameters: {"email"=>"bob@bob.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "bob@bob.com"], ["LIMIT", 1]]
+Completed 201 Created in 59255ms (Views: 0.2ms | ActiveRecord: 2.8ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3047648244906079080)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddAuthenticationTokenToUsers (20180509223255)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (30.5ms)[0m  [1m[35mALTER TABLE "users" ADD "authentication_token" character varying(30)[0m
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_authentication_token" ON "users"  ("authentication_token")[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180509223255"]]
+  [1m[35m (76.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(3047648244906079080)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = $1[0m  [["authentication_token", "SsqSN3tVxQVC_M622vP1"]]
+  [1m[35mSQL (11.4ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "authentication_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2018-05-09 22:35:35.301104"], ["authentication_token", "SsqSN3tVxQVC_M622vP1"], ["id", 6]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/v1/sessions" for 127.0.0.1 at 2018-05-09 15:42:57 -0700
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by V1::SessionsController#create as */*
+  Parameters: {"email"=>"bob@bob.com", "password"=>"[FILTERED]"}
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 1.6ms)
+
+
+  
+NameError (undefined local variable or method `acts_as_token_authenticatable' for #<Class:0x007f8b39c65180>):
+  
+app/models/user.rb:2:in `<class:User>'
+app/models/user.rb:1:in `<top (required)>'
+app/controllers/v1/sessions_controller.rb:3:in `create'
+Started POST "/v1/sessions" for 127.0.0.1 at 2018-05-09 15:43:22 -0700
+  [1m[35m (27.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by V1::SessionsController#create as */*
+  Parameters: {"email"=>"bob@bob.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "bob@bob.com"], ["LIMIT", 1]]
+Completed 201 Created in 59203ms (Views: 0.2ms | ActiveRecord: 3.4ms)
+
+
