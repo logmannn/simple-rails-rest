@@ -5,11 +5,12 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
+gem 'pg'
+gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.2'
 # gem 'sqlite3'
-gem 'mysql2'
+# gem 'mysql2'
 gem 'puma', '~> 3.7'
 
 group :development, :test do
